@@ -49,7 +49,7 @@
 
 // ===================
 
-// Об'єм і бюджет 
+// Об'єм і бюджет
 
 // const shoppingMallData = {
 //   shops: [
@@ -103,3 +103,48 @@
 // }
 
 // console.log(isBudgetEnough(shoppingMallData));
+
+// ===========================================
+
+// У вас є список учнів, які хочуть пограти гру. Але команд може бути тільки 3 по 3 людини в команді. Написати функцію, яка приймає в себе масив рядків. Всередині вона спочатку сортує імена по алфавіту. Як підсумок, вона повертає новий масив з трьома командами і рядком як 4-й елемент.
+
+const students = [
+  "Peter",
+  "Andrew",
+  "Ann",
+  "Mark",
+  "Josh",
+  "Sandra",
+  "Cris",
+  "Bernard",
+  "Takesi",
+  "Sam",
+];
+
+function sortStudentsByGroups(arr) {
+  arr.sort();
+  const a = [];
+  const b = [];
+  const c = [];
+  const rest = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    if (i < 3) {
+      a.push(arr[i]);
+    } else if (i < 6) {
+      b.push(arr[i]);
+    } else if (i < 9) {
+      c.push(arr[i]);
+    } else {
+      rest.push(arr[i]);
+    }
+  }
+  return [
+    a,
+    b,
+    c,
+    `Оставшиеся студенты: ${rest.length === 0 ? "-" : rest.join(", ")}`,
+  ];
+}
+
+console.log(sortStudentsByGroups(students));
