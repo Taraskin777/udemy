@@ -286,3 +286,6 @@ var arr1 = [0, 1, 2];
 var arr2 = [3, 4, 5];
 arr1 = [...arr1, ...arr2];
 console.log(arr1);
+
+let n = [15, 21, 56, 5, 1,];
+console.log(Math.floor(0.2));
