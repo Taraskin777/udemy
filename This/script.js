@@ -1,6 +1,5 @@
 "use strict";
 
-
 //1) Звичайна функція: this = window, але якщо use strict - тоді буде undefined
 
 // function showThis(a, b) {
@@ -48,26 +47,47 @@
 
 //4) ручна прив'язка this : call, apply, bind
 
-function sayName(surname) {
-  console.log(this);
-  console.log(this.name + surname);
-}
+// function sayName(surname) {
+//   console.log(this);
+//   console.log(this.name + surname);
+// }
 
-const user = {
-  name: "John",
+// const user = {
+//   name: "John",
+// };
+
+// sayName.call(user, "Smith");
+// sayName.apply(user, ["Smith"]);
+
+// function count(num) {
+//   return this * num;
+// }
+
+// const double = count.bind(2);
+// console.log(double(3));
+// console.log(double(13));
+
+// ------------------------------------
+
+const btn = document.querySelector("button");
+btn.addEventListener("click", (e) => {
+  
+  e.target.style.backgroundColor = "red";
+});
+
+// стрілкова функція не має свого контексту виклику, а бере його в батьківського елемента
+
+const obj = {
+  num: 5,
+  sayNumber: function () {
+    const say = () => {
+      console.log(this.num);
+    };
+    say();
+  },
 };
 
-sayName.call(user, "Smith");
-sayName.apply(user, ["Smith"]);
+obj.sayNumber();
 
-function count(num) {
-  return this * num;
-}
-
-const double = count.bind(2);
-console.log(double(3));
-console.log(double(13));
-
-
-
-
+const double = (a) => a * 2;
+console.log(double(4));
