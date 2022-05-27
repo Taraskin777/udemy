@@ -35,7 +35,9 @@
 //     console.error("Виникла помилка");
 //   })
 //   .finally(() => {
-//     console.log("Finally!");
+//     setTimeout(() => {
+//       console.log("Finally!");
+//     }, 2000);
 //   });
 
 const test = (time) => {
@@ -44,14 +46,19 @@ const test = (time) => {
   });
 };
 
-// test(1000).then(() => console.log("2000 ms"));
-// test(2000).then(() => console.log("3000 ms"));
+// test(1000).then(() => console.log("пройшла одна секунда..."));
+// test(3000)
+//   .then(() => console.log("пройшло три секунди..."))
+//   .finally(() => {
+//     setTimeout(() => {
+//       console.log("код успішно виконався");
+//     }, 2000);
+//   });
 
-// Promise.all([test(1000), test(2000)]).then(() => {
-//   console.log("All");
-// });
+Promise.all([test(1000), test(4000)]).then(() => {
+  console.log("All");
+});
 
 Promise.race([test(1000), test(2000)]).then(() => {
-   console.log("All");
- });
- 
+  console.log("All");
+});
