@@ -101,3 +101,44 @@ function checkFilms(arr) {
 }
 
 checkFilms(tranformedArray);
+
+const funds = [
+    { amount: -1400 },
+  { amount: 2400 },
+    { amount: -1000 },
+  { amount: 500 },
+  { amount: 10400 },
+    { amount: -11400 },
+];
+
+// const positiveFunds = funds
+//   .filter((item) => item.amount > 0)
+//   .reduce(
+//     (acc, curr) =>
+//       +`${(typeof acc === "object" ? acc.amount : acc) + curr.amount}`
+//   );
+
+const getPositiveIncomeAmount = (data) => {
+  return data
+    .filter((item) => item.amount > 0)
+    .reduce((acc, curr) => acc + curr.amount, 0);
+};
+
+getPositiveIncomeAmount(funds);
+
+const getTotalIncomeAmount = (data) => {
+//   const check = data.some((item) => item.amount < 0);
+
+//   if (check) {
+//     return data.reduce((acc, curr) => acc + curr.amount, 0);
+//   } else {
+//     return getPositiveIncomeAmount(data);
+//   }
+   return data.some(item => item.amount < 0) ? data.reduce((acc, curr) => acc + curr.amount, 0) : getPositiveIncomeAmount(data);
+   
+};
+
+getTotalIncomeAmount(funds);
+console.log(getTotalIncomeAmount(funds));
+
+
