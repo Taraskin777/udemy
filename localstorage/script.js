@@ -42,3 +42,5 @@ const serializedPersone = JSON.stringify(persone);
 localStorage.setItem('alex', serializedPersone);
 
 console.log(JSON.parse(localStorage.getItem('alex')));
+
+
