@@ -28,13 +28,10 @@ function myAnimation() {
   if (pos <= 600) {
     if (pos <= 300) {
       elem.style.top = pos + "px";
-    }
-
-    if (pos > 300) {
+    } else if (pos > 300) {
       posleft++;
       elem.style.left = posleft + "px";
     }
-
 
     requestAnimationFrame(myAnimation);
   }
